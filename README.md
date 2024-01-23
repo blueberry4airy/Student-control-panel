@@ -1,4 +1,7 @@
 # Student-control-panel         
+<img
+  src="https://www.freepnglogos.com/uploads/html5-logo-png/html5-logo-best-web-design-psd-html-cms-development-ecommerce-6.png"
+  style="display: inline-block; width: 100px; height: 40px">
 
 Student control panel, in which are located: 
 
