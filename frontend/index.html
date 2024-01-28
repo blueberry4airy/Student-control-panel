@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student control panel</title>
-  <link rel="icon" href="/favicon.png" type="image/svg">
+  <link rel="icon" href="favicon.png" type="image/svg">
   <link rel="stylesheet" href="css/normalize.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -34,7 +34,8 @@
         <div class="row">
           <div class="col-lg-5 col-md-6 col-sm-8">
             <h1 class="heading fw-normal">Add a student profile</h1>
-            <p class="lead fs-6">Fill out the field below to&nbsp;add a&nbsp;student to&nbsp;the table, which contains basic
+            <p class="lead fs-6">Fill out the field below to&nbsp;add a&nbsp;student to&nbsp;the table, which contains
+              basic
               information about all students.</p>
           </div>
         </div>
@@ -51,7 +52,8 @@
               Name
             </label>
             <div class="col-lg-6 col-md-10 col-sm-10">
-              <input required type="text" class="form-control" id="name" name="name" placeholder="ex: Olga">
+              <input required type="text" class="form-control capitalize-input" id="name" name="name"
+                placeholder="ex: Olga">
             </div>
           </div>
           <div class="row mb-4">
@@ -59,7 +61,8 @@
               Surname
             </label>
             <div class="col-lg-6 col-md-10 col-sm-10">
-              <input required type="text" class="form-control" id="surname" name="surname" placeholder="ex: Gorincioi">
+              <input required type="text" class="form-control capitalize-input" id="surname" name="surname"
+                placeholder="ex: Gorincioi">
             </div>
           </div>
           <div class="row mb-4">
@@ -67,7 +70,7 @@
               Middle Name
             </label>
             <div class="col-lg-6 col-md-10 col-sm-10">
-              <input required type="text" class="form-control" id="middleName" name="middleName"
+              <input required type="text" class="form-control capitalize-input" id="middleName" name="middleName"
                 placeholder="ex: Veaceslav">
             </div>
           </div>
@@ -93,7 +96,7 @@
               Faculty
             </label>
             <div class="col-lg-6 col-md-10 col-sm-10">
-              <input required type="text" class="form-control" id="faculty" name="faculty"
+              <input required type="text" class="form-control capitalize-input" id="faculty" name="faculty"
                 placeholder="ex: LEA english-russian">
             </div>
           </div>
@@ -106,10 +109,13 @@
         <form action="#" class="filter-form">
           <div class="row mb-3">
             <h2>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
-                <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2z"/>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-funnel"
+                viewBox="0 0 16 16">
+                <path
+                  d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2z" />
               </svg>
-              Filter: tape the information known</h2>
+              Filter: tape the information known
+            </h2>
           </div>
           <div class="row mb-3">
             <div class="input-group col">
@@ -174,6 +180,7 @@
               <th scope="col" class="sort-column" id="thFaculty">Faculty</th>
               <th scope="col" class="sort-column" id="thDateOfBirth">Birth Year (age)</th>
               <th scope="col" class="sort-column" id="thYearStudy">Study Years</th>
+              <th></th>
             </tr>
           </thead>
           <tbody id="addTableStudent"></tbody>
@@ -185,7 +192,7 @@
     <span>© Olga Gorincioi FED. All rights reserved.</span>
   </footer>
 
-  <script defer src="main.js"></script>
+  <script defer type="module" src="main.js"></script>
 </body>
 
 </html>
