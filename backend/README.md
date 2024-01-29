@@ -1,60 +1,60 @@
-# REST API для базы данных студентов
+# REST API for student database
 
-Перед запуском убедитесь, что вы установили Node.js версии 12 или выше.
+Before starting, make sure you have installed Node.js version 12 or higher.
 
-Для запуска сервера перейдите в папку с репозиторием и выполните команду `node index`. Для остановки нажмите сочетание клавиш CTRL+C. Важно разделить папку запуска сервера и клиентской части. Запустите папку сервера, как отдельный проект и отельно папку клиентской части.
+To start the server, go to the repository folder and run the `node index` command. To stop, press CTRL+C. It is important to separate the server and client startup folders. Run the server folder as a separate project and the client folder separately.
 
-После запуска сервера API будет доступен по пути `http://localhost:3000`.
+After starting the server, the API will be available along the path `http://localhost:3000`.
 
-## Методы API
+## API Methods
 
-Все методы API, требующие тела запроса, ожидают получить тело в виде JSON. Ответы всех методов также отдаются в виде JSON.
+All API methods that require a request body expect to receive the body as JSON. Responses from all methods are also returned as JSON.
 
-* `GET /api/students` получить список студентов. Параметры, передаваемые в URL:
-    * `search={search string}` поисковый запрос, при передаче метод вернёт студентов, у которых имя, фамилия, отчество или значение одного из контактов содержат указанную подстроку
-* `POST /api/students` создать нового студента. В теле запроса нужно передать объект студентов. Тело ответа успешно обработанного запроса будет содержать объект с созданным студентом.
-* `GET /api/students/{id}` получить данные студента по его ID. Тело ответа успешно обработанного запроса будет содержать объект студента.
-* `PATCH /api/students/{id}` перезаписать данные о студенте с переданным ID. Тело ответа успешно обработанного запроса будет содержать объект с обновлённым студентом.
-* `DELETE /api/students/{id}` удалить студента по переданному ID.
+* `GET /api/students` get a list of students. Parameters passed to the URL:
+     * `search={search string}` search query; when passed, the method will return students whose first name, last name, patronymic, or the value of one of their contacts contains the specified substring
+* `POST /api/students` create a new student. You need to pass the student's object in the body of the request. The response body of a successfully processed request will contain an object with the created student.
+* `GET /api/students/{id}` get student data by ID. The response body of a successfully processed request will contain a student object.
+* `PATCH /api/students/{id}` overwrite data about the student with the passed ID. The response body of a successfully processed request will contain an object with the updated student.
+* `DELETE /api/students/{id}` delete a student by the passed ID.
 
-## Структура объекта студента
+## Student object structure
 
 ```javascript
 {
-  // ID студента, заполняется сервером автоматически, после создания нельзя изменить
-  id: '1234567890',
-  // дата и время создания студента, заполняется сервером автоматически, после создания нельзя изменить. Это полезная информация, которая может потребоваться для последующей доработки приложения.
-  createdAt: '2021-02-03T13:07:29.554Z',
-  // дата и время изменения студента, заполняется сервером автоматически при изменении студента. Это полезная информация, которая может потребоваться для последующей доработки приложения.
-  updatedAt: '2021-02-03T13:07:29.554Z',
-  // * обязательное поле, имя студента
-  name: 'Василий',
-  // * обязательное поле, фамилия студента
-  surname: 'Мостовой',
-  // * обязательное поле, отчество студента
-  middleName: 'Васильевич',
-  // * обязательное поле, дата рождения студента (в формате даты. Побробнее читать о функциях объекта Data)
-  dateOfBirth: '2000-03-03T13:07:29.554Z',
-  // * обязательное поле, год начала обучения студента
-  yearStart: '2010',
-  // * обязательное поле, факультет
-  faculty: 'Исторический',
+   // Student ID, filled in automatically by the server, cannot be changed once created
+   id: '1234567890',
+   // date and time of student creation, filled in automatically by the server, cannot be changed after creation. This is useful information that may be required for further development of the application.
+   createdAt: '2021-02-03T13:07:29.554Z',
+   // date and time of student change, filled in automatically by the server when a student changes. This is useful information that may be required for further development of the application.
+   updatedAt: '2021-02-03T13:07:29.554Z',
+   // * required field, student name
+   name: 'Vasily',
+   // * required field, student's last name
+   surname: 'Moscow',
+   // * required field, student's middle name
+   middleName: 'Vasilievich',
+   // * required field, student’s date of birth (in date format. Read more about the functions of the Data object)
+   dateOfBirth: '2000-03-03T13:07:29.554Z',
+   // * required field, the year the student started studying
+   yearStart: '2010',
+   // * required field, faculty
+   faculty: 'Historical',
 }
 ```
 
-## Возможные статусы ответов
+## Possible response statuses
 
-Ответ сервера может содержать один из статусов ответа:
-* `200` - запрос обработан нормально
-* `201` - запрос на создание нового элемента успешно обработан, а заголовок ответа Location содержит ссылку на GET метод получения созданного элемента
-* `404` - переданный в запросе метод не существует или запрашиваемый элемент не найден в базе данных
-* `422` - объект, переданный в теле запроса, не прошёл валидацию. Тело ответа содержит массив с описаниями ошибок валидации:
-  ```javascript
-  [
-    {
-      field: 'Название поля объекта, в котором произошла ошибка',
-      message: 'Сообщение об ошибке, которое можно показать пользователю'
-    }
-  ]
+The server response may contain one of the response statuses:
+* `200` - the request was processed normally
+* `201` - the request to create a new element was successfully processed, and the Location response header contains a reference to the GET method for obtaining the created element
+* `404` - the method passed in the request does not exist or the requested element was not found in the database
+* `422` - the object passed in the request body did not pass validation. The response body contains an array with descriptions of validation errors:
+   ```javascript
+   [
+     {
+       field: 'Name of the object field in which the error occurred',
+       message: 'An error message that can be shown to the user'
+     }
+   ]
   ```
-* `500` - странно, но сервер сломался :(<br>Обратитесь к куратору Skillbox, чтобы решить проблему
+* `500` - strange, but the server is broken :(
